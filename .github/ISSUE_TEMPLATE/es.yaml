@@ -1,56 +1,76 @@
-name: Español
-description: Reportar un problema
+name: Reporte de Error (Español)
+description: Reportar un error para ayudarnos a mejorar
+title: "[Bug] "
+labels: ["kind/bug", "language/es"]
 body:
-  - type: textarea
-    id: problem
+  - type: markdown
     attributes:
-      label: ¿Qué ocurrió?
+      value: |
+        Gracias por tomarse el tiempo para rellenar este informe de error. Por favor, proporcione tanta información como sea posible.
+  - type: textarea
+    id: description
+    attributes:
+      label: Descripción del error
+      description: Una descripción clara y concisa de cuál es el error.
+      placeholder: Describe el error aquí...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Pasos para reproducir
+      description: Pasos para reproducir el comportamiento.
+      placeholder: |
+        1. Ejecutar '...'
+        2. Ver el error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamiento esperado
+      description: Una descripción clara y concisa de lo que esperabas que sucediera.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamiento actual
+      description: Una descripción clara y concisa de lo que está sucediendo actualmente.
+    validations:
+      required: true
+  - type: textarea
+    id: version
+    attributes:
+      label: Versión de minikube
+      description: Ejecuta `minikube version` y pega el resultado aquí.
+      placeholder: minikube version
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Entorno
       description: |
-        Consejo: añade el indicador "--alsologtostderr" en la línea de comandos para obtener más registros.
+        Ejecuta `minikube logs` y pega el resultado aquí.
+        También incluye información sobre tu sistema operativo, arquitectura y controlador.
+      placeholder: |
+        - SO: [ej. Ubuntu 22.04, macOS 13, Windows 11]
+        - Arquitectura: [ej. amd64, arm64]
+        - Controlador: [ej. docker, virtualbox, kvm2]
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: Adjunta el archivo de registro
-      description: |
-        Consejo: ejecuta `minikube logs --file=log.txt` y luego arrastra y suelta el archivo `log.txt` en el navegador.
-        **ADVERTENCIA:** Si estás usando el controlador HyperKit, revisa tus registros y elimina cualquier variable de entorno que pueda contener información sensible (por ejemplo, tokens de acceso o secretos).
-        Todas las variables de entorno se eliminarán automáticamente a partir de la versión `1.26.0` de minikube, pero en versiones anteriores deberán eliminarse manualmente.
-    validations:
-      required: true
-  - type: dropdown
-    id: operating-system
+      label: Registros de salida
+      description: Por favor, copia y pega cualquier salida de registro relevante.
+      render: shell
+  - type: checkboxes
+    id: terms
     attributes:
-      label: Sistema operativo
-      description: ¿Cuál es tu sistema operativo?
+      label: Código de Conducta
+      description: Al enviar este problema, aceptas seguir nuestro [Código de Conducta](https://github.com/kubernetes/minikube/blob/master/CODE_OF_CONDUCT.md).
       options:
-        - macOS (Default)
-        - Windows
-        - Ubuntu
-        - Redhat/Fedora
-        - Other
-    validations:
-      required: false
-  - type: dropdown
-    id: driver
-    attributes:
-      label: Controlador
-      description: ¿Qué controlador utilizas?
-      options:
-        - N/A
-        - Docker
-        - Podman
-        - HyperKit
-        - Hyper-V
-        - KVM2
-        - VirtualBox
-        - None (Baremetal)
-        - SSH
-        - VMware
-        - Parallels
-        - QEMU
-        - vfkit
-        - krunkit
-    validations:
-      required: false
+        - label: Acepto seguir el Código de Conducta de este proyecto
+          required: true
