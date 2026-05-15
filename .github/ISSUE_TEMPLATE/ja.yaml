@@ -1,56 +1,80 @@
-name: 日本語
-description: 問題を報告する
+name: バグ報告 (Japanese)
+description: ミニキューブのバグを報告する
+labels: ["kind/bug", "needs-triage"]
 body:
-  - type: textarea
-    id: problem
+  - type: markdown
     attributes:
-      label: 何が起こりましたか？
-      description: |
-        ヒント: 追加のログを取得するには、コマンドラインに "--alsologtostderr" フラグを付けて実行してください。
+      value: |
+        ## ミニキューブへようこそ！
+        バグ報告にご協力いただきありがとうございます。
+        問題を迅速に解決するために、できるだけ詳細な情報をご提供ください。
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: 事前確認
+      options:
+        - label: 最新バージョンのミニキューブを使用していますか？
+          required: true
+        - label: 既存のIssueを検索しましたか？
+          required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 問題の説明
+      description: 発生している問題を明確かつ簡潔に説明してください。
+      placeholder: 問題の説明をここに入力してください...
     validations:
       required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期待される動作
+      description: 何が起こることを期待していましたか？
+      placeholder: 期待される動作をここに入力してください...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 再現手順
+      description: 問題を再現するための手順を記載してください。
+      placeholder: |
+        1. '...' を実行する
+        2. '...' を確認する
+        3. エラーが発生する
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境情報
+      description: |
+        `minikube version` および `minikube logs` の出力を貼り付けてください。
+      placeholder: |
+        minikube version: v1.x.x
+        OS: Ubuntu 22.04
+        Docker: 24.x.x
+    validations:
+      required: true
+
   - type: textarea
     id: logs
     attributes:
-      label: ログファイルを添付
-      description: |
-        ヒント: `minikube logs --file=log.txt` を実行し、ブラウザに `log.txt` ファイルをドラッグ＆ドロップしてください。
-        **警告:** HyperKit ドライバーを使用している場合は、ログを確認し、機密情報（アクセストークンやシークレットなど）が含まれる環境変数を削除してください。
-        minikube バージョン `1.26.0` 以降では、すべての環境変数が自動的に削除されますが、それ以前のバージョンでは手動で削除する必要があります。
-    validations:
-      required: true
-  - type: dropdown
-    id: operating-system
-    attributes:
-      label: オペレーティングシステム
-      description: ご使用のOSは何ですか？
-      options:
-        - macOS (Default)
-        - Windows
-        - Ubuntu
-        - Redhat/Fedora
-        - Other
+      label: ログ出力
+      description: 関連するログや出力があれば貼り付けてください。
+      render: shell
     validations:
       required: false
-  - type: dropdown
-    id: driver
+
+  - type: textarea
+    id: additional
     attributes:
-      label: ドライバー
-      description: どのドライバーを使用していますか？
-      options:
-        - N/A
-        - Docker
-        - Podman
-        - HyperKit
-        - Hyper-V
-        - KVM2
-        - VirtualBox
-        - None (Baremetal)
-        - SSH
-        - VMware
-        - Parallels
-        - QEMU
-        - vfkit
-        - krunkit
+      label: 追加情報
+      description: 問題に関連するその他の情報があれば記載してください。
     validations:
       required: false
