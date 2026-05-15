@@ -1,0 +1,79 @@
+name: 버그 리포트 (한국어)
+description: 미니쿠베 버그를 보고하세요
+labels: ["kind/bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        버그 리포트를 제출해 주셔서 감사합니다! 문제를 재현하고 해결하는 데 도움이 되도록 최대한 자세한 정보를 제공해 주세요.
+  - type: textarea
+    id: description
+    attributes:
+      label: 버그 설명
+      description: 버그에 대한 명확하고 간결한 설명을 작성해 주세요.
+      placeholder: 무슨 일이 발생했나요?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 재현 방법
+      description: 문제를 재현하기 위한 단계를 작성해 주세요.
+      placeholder: |
+        1. '...' 명령 실행
+        2. '...' 설정 사용
+        3. 오류 발생
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 예상 동작
+      description: 어떤 동작을 예상했나요?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 실제 동작
+      description: 실제로 어떤 일이 발생했나요?
+    validations:
+      required: true
+  - type: textarea
+    id: version
+    attributes:
+      label: 버전 정보
+      description: "`minikube version` 명령의 출력 결과를 붙여넣어 주세요."
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 환경 정보
+      description: "`minikube logs` 또는 `minikube status` 출력 결과를 붙여넣어 주세요."
+      render: shell
+    validations:
+      required: false
+  - type: dropdown
+    id: driver
+    attributes:
+      label: 드라이버
+      description: 어떤 미니쿠베 드라이버를 사용하고 있나요?
+      options:
+        - docker
+        - virtualbox
+        - podman
+        - hyperkit
+        - kvm2
+        - none
+        - 기타
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: 추가 정보
+      description: 문제와 관련된 스크린샷, 로그 또는 기타 정보를 추가해 주세요.
+    validations:
+      required: false
