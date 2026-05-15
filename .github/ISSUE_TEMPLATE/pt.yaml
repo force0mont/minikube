@@ -1,0 +1,71 @@
+name: Relatório de Bug / Solicitação de Recurso (Português)
+description: Reporte um bug ou solicite um novo recurso no minikube
+labels: ["kind/support"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por contribuir com o minikube! Por favor, preencha este formulário com o máximo de detalhes possível.
+  - type: textarea
+    id: describe
+    attributes:
+      label: Descreva o bug ou solicitação de recurso
+      description: Uma descrição clara e concisa do problema ou recurso desejado.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Passos para reproduzir
+      description: Passos para reproduzir o comportamento.
+      placeholder: |
+        1. Execute '...'
+        2. Veja o erro '...'
+    validations:
+      required: false
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento esperado
+      description: Uma descrição clara e concisa do que você esperava que acontecesse.
+    validations:
+      required: false
+  - type: textarea
+    id: minikube-version
+    attributes:
+      label: Versão do minikube
+      description: Execute `minikube version` e cole a saída aqui.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Informações do ambiente
+      description: Execute `minikube logs` e cole a saída aqui, ou descreva seu ambiente.
+      render: shell
+    validations:
+      required: false
+  - type: dropdown
+    id: driver
+    attributes:
+      label: Driver utilizado
+      description: Qual driver você está usando?
+      options:
+        - docker
+        - virtualbox
+        - hyperkit
+        - kvm2
+        - vmware
+        - podman
+        - none
+        - outros
+    validations:
+      required: false
+  - type: textarea
+    id: additional
+    attributes:
+      label: Contexto adicional
+      description: Adicione qualquer outro contexto sobre o problema aqui, como capturas de tela.
+    validations:
+      required: false
