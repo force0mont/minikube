@@ -1,56 +1,78 @@
-name: Italiano
-description: Segnala un problema
+name: Segnalazione Bug (Italiano)
+description: Segnala un bug per aiutarci a migliorare minikube
+labels: ["kind/bug", "needs-triage"]
 body:
-  - type: textarea
-    id: problem
+  - type: markdown
     attributes:
-      label: Cosa è successo?
-      description: |
-        Suggerimento: Aggiungi il flag "--alsologtostderr" al comando per ottenere più log.
+      value: |
+        Grazie per aver dedicato del tempo a compilare questo report di bug!
+        Prima di inviare, controlla se esiste già una segnalazione simile.
+  - type: textarea
+    id: describe-bug
+    attributes:
+      label: Descrivi il bug
+      description: Una descrizione chiara e concisa del bug.
+      placeholder: Descrivi cosa è successo...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Passi per riprodurre
+      description: Passi per riprodurre il comportamento.
+      placeholder: |
+        1. Esegui '...'
+        2. Clicca su '...'
+        3. Scorri fino a '...'
+        4. Vedi l'errore
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento atteso
+      description: Una descrizione chiara e concisa di ciò che ti aspettavi accadesse.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Comportamento effettivo
+      description: Una descrizione chiara e concisa di ciò che è accaduto invece.
+    validations:
+      required: true
+  - type: input
+    id: minikube-version
+    attributes:
+      label: Versione di minikube
+      description: Esegui `minikube version` e incolla l'output qui.
+      placeholder: es. minikube v1.32.0
+    validations:
+      required: true
+  - type: input
+    id: driver
+    attributes:
+      label: Driver
+      description: Quale driver stai usando? (es. docker, virtualbox, kvm2)
+      placeholder: es. docker
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Sistema Operativo
+      description: Quale sistema operativo stai usando?
+      placeholder: es. Ubuntu 22.04, macOS 13.0, Windows 11
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: Allegare il file di log
-      description: |
-        Suggerimento: Esegui `minikube logs --file=log.txt` e poi trascina il file `log.txt` nel browser.
-        **ATTENZIONE:** Se stai usando il driver HyperKit, controlla i tuoi log e rimuovi eventuali variabili d'ambiente che potrebbero contenere informazioni sensibili (ad es. token di accesso o segreti).
-        Tutte le variabili d'ambiente saranno rimosse automaticamente a partire da minikube `1.26.0`, ma nelle versioni precedenti devono essere rimosse manualmente.
-    validations:
-      required: true
-  - type: dropdown
-    id: operating-system
+      label: Log rilevanti
+      description: Incolla qui eventuali log rilevanti. Esegui `minikube logs` per ottenerli.
+      render: shell
+  - type: textarea
+    id: additional-context
     attributes:
-      label: Sistema operativo
-      description: Qual è il tuo sistema operativo?
-      options:
-        - macOS (Default)
-        - Windows
-        - Ubuntu
-        - Redhat/Fedora
-        - Other
-    validations:
-      required: false
-  - type: dropdown
-    id: driver
-    attributes:
-      label: Driver
-      description: Quale driver stai usando?
-      options:
-        - N/A
-        - Docker
-        - Podman
-        - HyperKit
-        - Hyper-V
-        - KVM2
-        - VirtualBox
-        - None (Baremetal)
-        - SSH
-        - VMware
-        - Parallels
-        - QEMU
-        - vfkit
-        - krunkit
-    validations:
-      required: false
+      label: Contesto aggiuntivo
+      description: Aggiungi qualsiasi altro contesto riguardante il problema qui.
