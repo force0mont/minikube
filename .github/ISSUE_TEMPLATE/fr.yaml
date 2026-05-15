@@ -1,56 +1,85 @@
-name: Français
-description: Signaler un problème
+name: Bug Report (Français)
+description: Signalez un bug dans minikube
+labels: ["kind/bug", "needs-triage"]
 body:
-  - type: textarea
-    id: problem
+  - type: markdown
     attributes:
-      label: Que s’est-il passé ?
-      description: |
-        Astuce : ajoutez le paramètre "--alsologtostderr" à la ligne de commande pour obtenir davantage de journaux.
+      value: |
+        Merci de prendre le temps de remplir ce rapport de bug ! Veuillez remplir autant d'informations que possible.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description du problème
+      description: Une description claire et concise du bug.
+      placeholder: Décrivez le problème ici...
     validations:
       required: true
   - type: textarea
-    id: logs
+    id: expected
     attributes:
-      label: Joindre le fichier de journal
-      description: |
-        Astuce : exécutez `minikube logs --file=log.txt`, puis faites glisser et déposez le fichier `log.txt` dans le navigateur.
-        **AVERTISSEMENT :** Si vous utilisez le pilote HyperKit, veuillez vérifier vos journaux et supprimer toute variable d’environnement susceptible de contenir des informations sensibles (par ex. jetons d’accès ou secrets).
-        Toutes les variables d’environnement seront automatiquement supprimées à partir de la version `1.26.0` de minikube, mais pour les versions antérieures, elles doivent être supprimées manuellement.
+      label: Comportement attendu
+      description: Une description claire et concise de ce que vous attendiez.
+      placeholder: Ce qui devrait se passer...
     validations:
       required: true
-  - type: dropdown
-    id: operating-system
+  - type: textarea
+    id: actual
     attributes:
-      label: Système d’exploitation
-      description: Quel est votre système d’exploitation ?
-      options:
-        - macOS (Default)
-        - Windows
-        - Ubuntu
-        - Redhat/Fedora
-        - Other
+      label: Comportement actuel
+      description: Une description claire et concise de ce qui se passe réellement.
+      placeholder: Ce qui se passe réellement...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Étapes pour reproduire
+      description: Étapes pour reproduire le comportement.
+      placeholder: |
+        1. Exécuter '...'
+        2. Voir l'erreur '...'
+    validations:
+      required: true
+  - type: textarea
+    id: minikube-info
+    attributes:
+      label: Informations sur l'environnement
+      description: Veuillez exécuter `minikube logs` et `minikube status` et coller le résultat ici.
+      placeholder: Collez la sortie de `minikube logs` et `minikube status` ici...
     validations:
       required: false
   - type: dropdown
+    id: os
+    attributes:
+      label: Système d'exploitation
+      options:
+        - Linux
+        - macOS
+        - Windows
+        - Autre
+    validations:
+      required: true
+  - type: input
+    id: minikube-version
+    attributes:
+      label: Version de minikube
+      description: Quelle version de minikube utilisez-vous ? Exécutez `minikube version`.
+      placeholder: ex. v1.32.0
+    validations:
+      required: true
+  - type: input
     id: driver
     attributes:
-      label: Pilote
-      description: Quel pilote utilisez-vous ?
-      options:
-        - N/A
-        - Docker
-        - Podman
-        - HyperKit
-        - Hyper-V
-        - KVM2
-        - VirtualBox
-        - None (Baremetal)
-        - SSH
-        - VMware
-        - Parallels
-        - QEMU
-        - vfkit
-        - krunkit
+      label: Driver
+      description: Quel driver utilisez-vous ? (ex. docker, virtualbox, kvm2, hyperkit)
+      placeholder: ex. docker
+    validations:
+      required: false
+  - type: textarea
+    id: additional
+    attributes:
+      label: Contexte supplémentaire
+      description: Ajoutez tout autre contexte concernant le problème ici.
+      placeholder: Informations supplémentaires...
     validations:
       required: false
