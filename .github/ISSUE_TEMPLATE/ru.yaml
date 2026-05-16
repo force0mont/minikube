@@ -1,54 +1,82 @@
-name: Сообщить о проблеме
-description: Отчет о проблеме на русском
+name: Bug Report (Russian / Русский)
+description: Сообщить об ошибке в minikube
+labels: ["kind/bug", "needs-triage"]
 body:
-  - type: textarea
-    id: problem
+  - type: markdown
     attributes:
-      label: Что произошло?
-      description: |
-        Подсказка: Добавьте флаг "--alsologtostderr", чтобы получить более подробные логи
+      value: |
+        Спасибо за сообщение об ошибке! Пожалуйста, заполните форму ниже как можно подробнее.
+  - type: textarea
+    id: description
+    attributes:
+      label: Описание ошибки
+      description: Чёткое и краткое описание ошибки.
     validations:
       required: true
   - type: textarea
-    id: logs
+    id: reproduce
     attributes:
-      label: Приложите логи
-      description: |
-        Подсказка: Выполните `minikube logs --file=log.txt` и перетащите файл `log.txt` в браузер.
+      label: Шаги для воспроизведения
+      description: Шаги для воспроизведения ошибки.
+      placeholder: |
+        1. Запустить '...'
+        2. Перейти к '...'
+        3. Увидеть ошибку
     validations:
       required: true
-  - type: dropdown
-    id: operating-system
+  - type: textarea
+    id: expected
     attributes:
-      label: Операционная система
-      description: Какая у вас ОС?
-      options:
-        - macOS (Default)
-        - Windows
-        - Ubuntu
-        - Redhat/Fedora
-        - Other
+      label: Ожидаемое поведение
+      description: Чёткое и краткое описание того, что должно происходить.
+    validations:
+      required: true
+  - type: textarea
+    id: minikube-version
+    attributes:
+      label: Версия minikube
+      description: Вывод команды `minikube version`
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Информация об окружении
+      description: Вывод команды `minikube start` и `minikube logs`
+      render: shell
     validations:
       required: false
   - type: dropdown
     id: driver
     attributes:
       label: Драйвер
-      description: Какой драйвер используете?
+      description: Какой драйвер вы используете?
       options:
-        - N/A
-        - Docker
-        - Podman
-        - HyperKit
-        - Hyper-V
-        - KVM2
-        - VirtualBox
-        - None (Baremetal)
-        - SSH
-        - VMware
-        - Parallels
-        - QEMU
-        - vfkit
-        - krunkit
+        - docker
+        - virtualbox
+        - hyperkit
+        - kvm2
+        - podman
+        - ssh
+        - none
+        - другой
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Операционная система
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Дополнительный контекст
+      description: Любая другая информация об ошибке.
     validations:
       required: false
