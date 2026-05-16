@@ -1,0 +1,70 @@
+name: 错误报告 (中文)
+description: 使用中文报告 minikube 中的错误
+labels: ["kind/bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您提交错误报告！请尽可能详细地填写以下信息，以帮助我们解决问题。
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 请清晰简洁地描述问题所在。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 请描述复现此问题的步骤。
+      placeholder: |
+        1. 运行命令 '...'
+        2. 查看错误 '...'
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期行为
+      description: 请描述您预期发生的情况。
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际行为
+      description: 请描述实际发生的情况。
+    validations:
+      required: true
+  - type: textarea
+    id: minikube-version
+    attributes:
+      label: minikube 版本
+      description: 请运行 `minikube version` 并粘贴输出结果。
+      placeholder: minikube version
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      description: 请运行 `minikube logs --file=logs.txt` 并上传 logs.txt 文件，或粘贴 `minikube status` 的输出结果。
+      placeholder: |
+        操作系统:
+        驱动程序:
+        容器运行时:
+        Kubernetes 版本:
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: 相关日志输出
+      description: 请粘贴任何相关的日志输出。
+      render: shell
+  - type: textarea
+    id: additional
+    attributes:
+      label: 其他信息
+      description: 请添加任何其他有助于解决问题的上下文信息或截图。
