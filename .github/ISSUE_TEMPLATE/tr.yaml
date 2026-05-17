@@ -1,0 +1,93 @@
+name: Bug Report (Türkçe)
+description: Minikube ile ilgili bir hata bildirin
+labels: ["kind/bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Hata raporunuz için teşekkürler! Lütfen aşağıdaki formu doldurun.
+  - type: textarea
+    id: describe-bug
+    attributes:
+      label: Hatayı Açıklayın
+      description: Hatanın ne olduğunu açık ve özlü bir şekilde açıklayın.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Yeniden Üretme Adımları
+      description: Davranışı yeniden üretme adımları
+      placeholder: |
+        1. '...' komutunu çalıştırın
+        2. '...' çıktısını görün
+        3. Hata oluştu
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Beklenen Davranış
+      description: Ne olmasını beklediğinizi açık ve özlü bir şekilde açıklayın.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Gerçekleşen Davranış
+      description: Gerçekte ne olduğunu açık ve özlü bir şekilde açıklayın.
+    validations:
+      required: true
+  - type: input
+    id: minikube-version
+    attributes:
+      label: Minikube Sürümü
+      description: "`minikube version` komutunun çıktısı"
+      placeholder: "örn. minikube v1.32.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: driver
+    attributes:
+      label: Sürücü
+      description: Hangi minikube sürücüsünü kullanıyorsunuz?
+      options:
+        - docker
+        - kvm2
+        - virtualbox
+        - podman
+        - hyperkit
+        - vmware
+        - none
+        - ssh
+        - Diğer
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: İşletim Sistemi
+      options:
+        - Linux
+        - macOS
+        - Windows
+    validations:
+      required: true
+  - type: input
+    id: os-version
+    attributes:
+      label: İşletim Sistemi Sürümü
+      placeholder: "örn. Ubuntu 22.04, macOS 14.0, Windows 11"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: İlgili Log Çıktısı
+      description: "`minikube logs` çıktısını veya ilgili günlükleri buraya yapıştırın."
+      render: shell
+  - type: textarea
+    id: additional
+    attributes:
+      label: Ek Bağlam
+      description: Sorunla ilgili başka bağlam veya ekran görüntüsü ekleyin.
